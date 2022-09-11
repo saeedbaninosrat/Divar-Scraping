@@ -5,7 +5,7 @@ import time
 url = "https://divar.ir/v/-/{token}"
 
 token_file = open(
-    r'C:\Users\saeed\Desktop\Mozayedegar\Divar-Scraping\scrapy\divar\tokens.txt', encoding='utf-8')
+    r'C:\Users\saeed\Desktop\Mozayedegar\Divar-Scraping\scrapy\divar\Tokens\New Text Document.txt', encoding='utf-8')
 tokens = token_file.read().split(',')
 token_file.close()
 
