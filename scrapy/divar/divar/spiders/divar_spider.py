@@ -70,32 +70,14 @@ class DivarSpider(scrapy.Spider):
         #     "div div.kt-page-title__subtitle--responsive-sized::text").extract()
         # price = response.css(
         #     "div p.kt-unexpandable-row__value::text").extract_first()
+        listw = [linkss, brand, test]
         yield {
-            # 'Distance': distance,
+            
+            # 'Token': linkss,
 
-            # 'Year': year,
-
-            # 'Color': color,
-
-            # 'MotorState': motorState,
-
-            # 'ChassisState': chassisState,
-
-            # 'Guarantee': guarantee,
-
-            # 'GearboxModel': gearboxModel,
-
-            # 'PaymentMode': paymentMode,
-
-            # 'Price': price,
-
-            # 'Block': block,
-
-            'Token': linkss,
-
-            # 'Infos': allinfos,
-            'testt': brand,
-            'test': test,
+            'Infos': listw,
+            # 'testt': brand,
+            # 'test': test,
 
 
 
