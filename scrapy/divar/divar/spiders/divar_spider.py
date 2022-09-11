@@ -5,7 +5,7 @@ import time
 url = "https://divar.ir/v/-/{token}"
 
 token_file = open(
-    r'C:\Users\saeed\Desktop\scrapy\divar\tokens.txt', encoding='utf-8')
+    r'C:\Users\saeed\Desktop\Mozayedegar\Divar-Scraping\scrapy\divar\tokens.txt', encoding='utf-8')
 tokens = token_file.read().split(',')
 token_file.close()
 
@@ -15,26 +15,31 @@ class DivarSpider(scrapy.Spider):
     start_urls = [url.format(token=token) for token in tokens]
 
     def parse(self, response):
+
         # time.sleep(2)
 
-        # # dyc is Distance, Year, Color                                                        It works correctly
-        # dyc = response.css('div span.kt-group-row-item__value::text')                         
+        # dyc is Distance, Year, Color                                                        It works correctly
+        # dyc = response.css('div span.kt-group-row-item__value::text')
+
+        linkss = response.url
 
         # information = response.xpath('//div[@class="post-page__section--padded"]/div/text()').extract()
 
-        test = response.css('*div[@class="kt-base-row kt-base-row--large kt-unexpandable-row"] div p::text')
         # brandmodel = response.xpath('//*[@id="app"]/div[1]/div[1]/div[1]/div[4]/div[@class="kt-base-row kt-base-row--large kt-unexpandable-row"]/div/span/a/text()' ).getall()
-        # sellerid = response.xpath('//*[@id="app"]/div[1]/div[1]/div[1]/div[4]/div[@class="kt-base-row kt-base-row--large kt-unexpandable-row"]/div/span/a/text()').getall()
 
+        brand = response.xpath(
+            '//*[@id="app"]/div[1]/div[1]/div[1]/div[4]/div[@class="kt-base-row kt-base-row--large kt-unexpandable-row"]/div/*/*/text()').getall()
+
+        test = response.xpath(
+            '//*[@id="app"]/div[1]/div[1]/div[1]/div[4]/div[@class="kt-base-row kt-base-row--large kt-unexpandable-row"]/div/*/text()').getall()
+        #  response.xpath('//*[@id="app"]/div[1]/div[1]/div[1]/div[4]/div[@class="kt-base-row kt-base-row--large kt-unexpandable-row"]')
+        # keyss = response.xpath('//*[@id="app"]/div[1]/div[1]/div[1]/div[4]/div[@class="kt-base-row kt-base-row--large kt-unexpandable-row"]/div[@class="kt-base-row__start kt-unexpandable-row__title-box"]/p/text()').getall()
+        # valuess = response.xpath('//*[@id="app"]/div[1]/div[1]/div[1]/div[4]/div[@class="kt-base-row kt-base-row--large kt-unexpandable-row"]/div[@class="kt-base-row__end kt-unexpandable-row__value-box"]/p/text()').getall()
         # brandmodel = response.css('span a.kt-text-truncate::text')
 
         # informatione = response.css('div p.kt-unexpandable-row__value::text')
 
         # # span a.kt-text-truncate
-
-        linkss = response.url
-
-        # # brand_and_model =
 
         # distance = (dyc[0].extract())
 
@@ -65,7 +70,6 @@ class DivarSpider(scrapy.Spider):
         #     "div div.kt-page-title__subtitle--responsive-sized::text").extract()
         # price = response.css(
         #     "div p.kt-unexpandable-row__value::text").extract_first()
-
         yield {
             # 'Distance': distance,
 
@@ -89,11 +93,14 @@ class DivarSpider(scrapy.Spider):
 
             'Token': linkss,
 
-            # 'Infos': allinfos
+            # 'Infos': allinfos,
+            'testt': brand,
+            'test': test,
 
-            'test': test
 
-            # 'testt' : brandmodel,
 
             # 'sellerid': [sellerid]
         }
+
+
+# Code to start spider is /main scrapy spider divar -o testprice.csv -t csv
