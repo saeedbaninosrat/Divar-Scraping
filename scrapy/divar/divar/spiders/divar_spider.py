@@ -70,6 +70,7 @@ class DivarSpider(scrapy.Spider):
         #     "div div.kt-page-title__subtitle--responsive-sized::text").extract()
         # price = response.css(
         #     "div p.kt-unexpandable-row__value::text").extract_first()
+        
         listw = [linkss, brand, test]
         yield {
             
