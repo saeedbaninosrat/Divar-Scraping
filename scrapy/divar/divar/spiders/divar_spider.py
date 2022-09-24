@@ -7,7 +7,7 @@ url = "https://divar.ir/v/-/{token}"
 # I've extracted the pages' tokens and put them all in a text document named TOKENS
 token_file = open(
     r'C:\Users\Administrator\Desktop\scrapy\divar\Tokens\TOKENS.txt', encoding='utf-8')
-tokens = token_file.read().split(',')
+tokens = token_file.read().split('\n')
 token_file.close()
 
 
