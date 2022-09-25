@@ -1,0 +1,10 @@
+{
+  "platform": "docker",
+  "app": "divar-scraping4",
+  "disks": [
+    {
+      "name": "data",
+      "mountTo": "/usr/src/app"
+    }
+  ]
+}
